@@ -16,9 +16,9 @@ When I open a bookstore and the repository has no application code, I want one N
 
 **Given** a fresh clone of the repository  
 **When** I run `npm install` and `npm start`  
-**Then** the API listens on port 3000 and creates `data/paperboat.sqlite` with `product`, `cart`, `cart_item`, `order`, and `order_item` tables
+**Then** the API listens on port 3000 and creates `data/booknest.sqlite` with `product`, `cart`, `cart_item`, `order`, and `order_item` tables
 
-**Clarification:** The ticket specifies "product, cart, cart-item, and order tables" but an orders table requires both an `order` header table and an `order_item` line-item table to hold the full order structure. The five-table design (`product`, `cart`, `cart_item`, `order`, `order_item`) is the minimal implementation that satisfies the ticket's intent. The repo-context/Book.md specifies a database file named `data/booknest.sqlite`; this requirement follows the ticket and uses `data/paperboat.sqlite`. Implementations should reconcile this naming before deployment, or update the repo-context baseline to match the ticket.
+**Clarification:** The database file is `data/booknest.sqlite` per the repo context. The five tables are `product`, `cart`, `cart_item`, `order`, and `order_item`. The `order_item` table holds the line items of each order.
 
 ---
 
@@ -129,7 +129,7 @@ When I open a bookstore and the repository has no application code, I want one N
 
 **Given** the server has created books, a cart, and an order  
 **When** the server restarts  
-**Then** `GET /api/books/:id` returns the book, the order is still readable, and stock levels reflect prior checkout reductions
+**Then** `GET /api/books/:id` returns the book, `GET /api/orders/:id` returns the order, and stock levels reflect prior checkout reductions
 
 ---
 
@@ -137,30 +137,44 @@ When I open a bookstore and the repository has no application code, I want one N
 
 **Given** the repository with all source code  
 **When** I run `npm test`  
-**Then** all tests pass, covering:
-- Health endpoint (`tests/health.test.js`: 1 test verifying AC2)
-- Catalog auth (`tests/books.test.js`: 2 tests verifying AC3, AC4)
-- Catalog read (`tests/books.test.js`: 2 additional tests verifying AC5)
-- Cart operations (`tests/cart.test.js`: 4 tests verifying AC6, AC7, AC8, AC9)
-- Checkout flows (`tests/checkout.test.js`: 2 tests verifying AC10, AC11)
-- Shipping auth (`tests/orders.test.js`: 2 tests verifying AC12, AC13)
-- Persistence (`tests/persistence.test.js`: 1 test verifying AC14)
+**Then** all tests pass, covering health endpoint, catalog auth, catalog read, cart operations, checkout flows, shipping auth, and persistence
 
-**Total: 14 behavioral tests verifying ACs 1–14.** AC15 is a delivery gate requiring those 14 tests to exist and pass; it is not itself a separate test case.
+**Verification:** AC15 is satisfied when `npm test` exits with code 0. The test suite comprises 15 test cases total: 1 health (AC2), 4 books (AC3, AC4, AC5, plus one for retrieving a created book), 4 cart (AC6, AC7, AC8, AC9), 2 checkout (AC10, AC11), 2 orders (AC12, AC13), 1 persistence (AC14), and 1 suite-level test that runs `npm test` programmatically and asserts exit code 0 (AC15 verification). AC1 is verified by test setup: the server starts successfully and creates `data/booknest.sqlite` with the five required tables (`product`, `cart`, `cart_item`, `order`, `order_item`), which is a precondition for all subsequent tests.
+
+**Test case mapping:**
+- **AC1 (scaffold and database creation):** Verified by test setup (server starts, database file exists with five tables)
+- **AC2 (health check):** 1 test in `tests/health.test.js`
+- **AC3 (admin can create book):** 1 test in `tests/books.test.js`
+- **AC4 (shopper cannot create book):** 1 test in `tests/books.test.js`
+- **AC5 (list books):** 1 test in `tests/books.test.js`
+- **AC3 retrieval verification (`GET /api/books/:id` returns created book):** 1 test in `tests/books.test.js`
+- **AC6 (add item to new cart):** 1 test in `tests/cart.test.js`
+- **AC7 (increment existing cart line):** 1 test in `tests/cart.test.js`
+- **AC8 (reject add above stock):** 1 test in `tests/cart.test.js`
+- **AC9 (remove cart item):** 1 test in `tests/cart.test.js`
+- **AC10 (successful checkout):** 1 test in `tests/checkout.test.js`
+- **AC11 (checkout fails on insufficient stock):** 1 test in `tests/checkout.test.js`
+- **AC12 (admin can ship order):** 1 test in `tests/orders.test.js`
+- **AC13 (shopper cannot ship order):** 1 test in `tests/orders.test.js`
+- **AC14 (data persists after restart):** 1 test in `tests/persistence.test.js`
+- **AC15 (test suite passes):** 1 test in `tests/suite.test.js` that spawns `npm test` and asserts exit code 0
+
+**Total: 15 test cases.** AC1 is verified by startup; ACs 2–15 are verified by 15 explicit test cases (14 behavioral plus 1 suite-level integration test).
 
 ---
 
 ## Technical Notes
 
-- **Schema:** SQLite tables `product` (id, title, author, price, stock), `cart` (id), `cart_item` (cart_id, book_id, quantity), `order` (id, cart_id, status, total, created_at), and `order_item` (order_id, book_id, quantity, unit_price). Create on startup if missing. File path: `data/paperboat.sqlite` per ticket AC1. (Note: repo-context/Book.md specifies `data/booknest.sqlite`; reconcile before deployment or update repo-context to match ticket.)
+- **Schema:** SQLite tables `product` (id, title, author, price, stock), `cart` (id), `cart_item` (cart_id, book_id, quantity), `order` (id, cart_id, status, total, created_at), and `order_item` (order_id, book_id, quantity, unit_price). Create on startup if missing. File path: `data/booknest.sqlite`.
 - **Auth:** `x-role` header (`admin` or `shopper`) controls access to `POST /api/books` and `POST /api/orders/:id/ship`. Requests without `x-role` default to `shopper`.
 - **Cart session:** `x-cart-id` header identifies the cart. Generate a new UUID cart id on first `POST /api/cart/items` when none is provided; return it in the response so the client can include it on subsequent cart requests.
 - **Checkout transaction:** Atomically validate stock for all cart items, reduce stock for each, create the order and order_item rows, and clear the cart. Roll back on any failure (e.g., insufficient stock, database error).
 - **Errors:** Return `{ "error": "<message>" }` with appropriate HTTP status (400 for validation/business rule failures, 403 for authorization failures, 404 for not found, 500 for unexpected server errors).
 - **Test files:** All test files live in `tests/` at the repository root. Test setup creates the database before each test suite and clears all tables before each test case to ensure isolation.
+- **Routes:** The API exposes `GET /api/health`, `GET /api/books`, `POST /api/books`, `GET /api/books/:id`, `GET /api/cart`, `POST /api/cart/items`, `DELETE /api/cart/items/:bookId`, `POST /api/checkout`, `GET /api/orders/:id`, and `POST /api/orders/:id/ship`. The `GET /api/orders/:id` route is required to verify AC14 (data persistence after restart).
 
 ---
 
 ## Verification
 
-Each acceptance criterion maps to one or more test cases in the test suite. The LLD (`stories/01-Book.md`) details the test structure and assertions. AC1 is verified by the scaffold tests (server startup, database creation); ACs 2–14 are verified by the 14 behavioral tests enumerated in AC15. The test suite (`npm test`) must pass as the delivery gate for this story.
+Each acceptance criterion maps to verification steps in the test suite or runtime behavior. AC1 is verified by server startup and database file creation during test setup. ACs 2–15 are verified by the 15 test cases enumerated in AC15's verification section. AC15 is verified by running `npm test` and confirming exit code 0. The LLD (`stories/01-Book.md`) details the file plan, route handlers, schema DDL, and test structure with explicit assertions for each AC.

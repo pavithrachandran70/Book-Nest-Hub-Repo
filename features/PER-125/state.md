@@ -3,13 +3,13 @@ schema_version: 1
 key: PER-125
 status: escalated
 current_node: critic
-track: standard
+track: quick
 involved_repos:
 - Book
 depends_on: []
 owner: pavc
-lease_until: '2026-11-11T10:05:51.545891+00:00'
-revision: 17
+lease_until: '2026-11-11T10:28:23.451260+00:00'
+revision: 32
 hub_sha: null
 ticket_hash: f371eafdaaafd03f
 jira_hash: f371eafdaaafd03f
@@ -23,13 +23,14 @@ child_ticket_keys: []
 critic_iterations: 2
 dev_retries: 0
 pr_revision_rounds: 0
-gate_rounds: {}
+gate_rounds:
+  plan: 1
 pr_ids:
-  hub_plan: '1'
+  hub_plan: '2'
 waiting_for: human_critic
-tokens_in: 242958
-tokens_out: 43451
-cost_anthropic_usd: 1.380311
+tokens_in: 540277
+tokens_out: 93819
+cost_anthropic_usd: 3.02746
 history:
 - node: intake
   note: snapshot written
@@ -74,6 +75,49 @@ history:
 - node: critic
   note: exhausted; wrote change_requests.md
   at: '2026-11-09T10:17:06.142931+00:00'
+- node: intake
+  note: snapshot written
+  at: '2026-11-09T10:26:31.711548+00:00'
+- node: triage
+  note: llm classifier
+  at: '2026-11-09T10:26:33.750034+00:00'
+- node: planner
+  note: v2 source=llm loops=['story_with_design', 'delivery', 'pr_fix_minor', 'pr_fix_moderate']
+    steps=['analyst', 'designer', 'test_architect', 'critic'] skipped=['tpm_gate']
+  at: '2026-11-09T10:26:49.039548+00:00'
+- node: plan_review
+  note: awaiting human hub PR approval (plan)
+  at: '2026-11-09T10:26:58.126257+00:00'
+- node: plan_review
+  note: approved via hub PR (reconcile)
+  at: '2026-11-09T10:28:23.425639+00:00'
+- node: plan_review
+  note: "forge unlocked plan_review \u2192 resume"
+  at: '2026-11-09T10:28:23.451290+00:00'
+- node: analyst
+  note: wrote requirements.md
+  at: '2026-11-09T10:29:00.863672+00:00'
+- node: analyst
+  note: quick inline story
+  at: '2026-11-09T10:30:57.688596+00:00'
+- node: designer
+  note: lld updated
+  at: '2026-11-09T10:32:58.506774+00:00'
+- node: test_architect
+  note: tests appended
+  at: '2026-11-09T10:34:59.902375+00:00'
+- node: critic
+  note: repaired ['requirements.md', 'stories/01-Book.md'] iter=1
+  at: '2026-11-09T10:37:59.061401+00:00'
+- node: critic
+  note: repaired ['requirements.md', 'stories/01-Book.md'] iter=2
+  at: '2026-11-09T10:41:22.817129+00:00'
+- node: critic
+  note: fail after rewrite
+  at: '2026-11-09T10:41:45.793187+00:00'
+- node: critic
+  note: exhausted; wrote change_requests.md
+  at: '2026-11-09T10:41:45.793537+00:00'
 ---
 
 # Feature state
