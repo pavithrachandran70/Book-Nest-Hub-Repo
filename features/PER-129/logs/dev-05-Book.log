@@ -1,0 +1,11 @@
+Story 05-Book is implemented. `npm test` passes: 6 suites, 47 tests.
+
+The new file is `__tests__/persistence.test.js`. It covers AC-14 with five cases that write through the API, close the database, and read the same SQLite file on a new connection:
+
+- Book fields survive the restart.
+- Cart and cart item rows survive the restart.
+- Order and order item rows survive the restart, with status `placed` and the correct total.
+- Checkout stock reduction survives the restart.
+- Order status `shipped` survives the restart.
+
+Each case closes the shared connection. The next case reloads the app so later API calls use an open database.
