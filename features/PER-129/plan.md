@@ -12,19 +12,19 @@ Building a complete Node.js bookstore API with SQLite from an empty repo require
 
 ## Steps
 
-1. [ ] **analyst (requirements)** — Extract structured requirements from the detailed acceptance criteria.
+1. [x] **analyst (requirements)** — Extract structured requirements from the detailed acceptance criteria.
    - focus: Keep the requirements focused on the API contract, data model, and behavioral rules; the ticket already provides clear acceptance criteria.
-2. [ ] **architect (hld)** — Define the SQLite schema, Express route contracts, auth model, and cart/checkout state transitions before coding.
+2. [x] **architect (hld)** — Define the SQLite schema, Express route contracts, auth model, and cart/checkout state transitions before coding.
    - focus: Design the complete data model (product, cart, cart_item, order, order_item tables with constraints), API surface (all routes with request/response shapes), role-based access rules, and cart-to-order state machine; address concurrency for stock updates.
-3. [ ] **scrum_master (breakdown)** — Break down into implementable slices: scaffold, schema, each API endpoint group, and tests.
+3. [x] **scrum_master (breakdown)** — Break down into implementable slices: scaffold, schema, each API endpoint group, and tests.
    - focus: Structure stories so the first delivers the project scaffold and schema, then catalog endpoints, then cart, then checkout and shipping, then comprehensive tests; each story should be independently testable.
-4. [ ] **designer (lld)** — Each story needs a concrete file plan and implementation detail for the endpoints, database access, and validation logic.
+4. [x] **designer (lld)** — Each story needs a concrete file plan and implementation detail for the endpoints, database access, and validation logic.
    - focus: Provide file structures, Express route handler skeletons, SQL queries for each operation, and validation rules; ensure better-sqlite3 usage patterns and transaction boundaries are explicit.
-5. [ ] **test_architect (tests)** — Map each acceptance criterion to specific test cases covering happy paths, auth, validation, and edge cases.
+5. [x] **test_architect (tests)** — Map each acceptance criterion to specific test cases covering happy paths, auth, validation, and edge cases.
    - focus: Create tests for health check, catalog auth (admin/shopper), cart operations (add/update/delete), checkout with stock validation, shipping auth, and persistence across restarts; ensure traceability to every acceptance criterion.
-6. [ ] **critic (consistency_check)** — Verify consistency between the schema in HLD, the API contracts in HLD, the route implementations in stories, and the test coverage.
+6. [x] **critic (consistency_check)** — Verify consistency between the schema in HLD, the API contracts in HLD, the route implementations in stories, and the test coverage.
    - focus: Check that every table in the schema appears in stories, every route in the HLD has implementation detail in a story, and every acceptance criterion has a corresponding test case.
-7. [ ] **merge_pack (pack)** _(auto)_ — Pack per-ticket specs into merged_plan.md for review.
+7. [x] **merge_pack (pack)** _(auto)_ — Pack per-ticket specs into merged_plan.md for review.
 8. [ ] **architect_gate (review)** _(auto)_ — Human approval of specs and this plan before Dev.
 9. [ ] **dev** _(auto)_ — Loop delivery.
 10. [ ] **pre_pr_qa** _(auto)_ — Loop delivery.
