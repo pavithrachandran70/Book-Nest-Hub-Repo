@@ -66,3 +66,5 @@
 2026-11-09T12:00:13.811712+00:00 dev verify 01-Book PASS attempt=1
 2026-11-09T12:00:17.364797+00:00 dev cursor 02-Book attempt=1
 2026-11-09T12:02:44.479637+00:00 dev verify 02-Book PASS attempt=1
+2026-11-09T12:02:47.698173+00:00 dev cursor 03-Book attempt=1
+2026-11-09T12:04:36.327842+00:00 dev verify 03-Book PASS attempt=1

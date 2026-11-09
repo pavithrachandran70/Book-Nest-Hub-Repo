@@ -1,0 +1,16 @@
+Story **03-Book** cart API is in place; all **28** tests passed.
+
+### What was implemented
+- `POST /api/cart/items` — create/use cart, add/increment items, stock validation
+- `GET /api/cart` — cart contents with `price` and `lineTotal`
+- `DELETE /api/cart/items/:bookId` — remove a line
+
+### Files changed
+| File | Change |
+|------|--------|
+| `src/routes/cart.js` | **New** — cart routes + validation |
+| `src/app.js` | Mount `/api/cart` |
+| `__tests__/cart.test.js` | **New** — 14 story tests |
+
+### Tests
+`npm test` → 3 suites, 28 tests passed.
