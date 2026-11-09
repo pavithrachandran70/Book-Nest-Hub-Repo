@@ -60,3 +60,7 @@
 2026-11-09T11:39:58.456052+00:00 heartbeat architect_gate
 2026-11-09T11:39:58.456177+00:00 node start architect_gate
 2026-11-09T11:40:08.710989+00:00 node end architect_gate waiting=architect_review
+2026-11-09T11:50:00.126341+00:00 heartbeat dev
+2026-11-09T11:50:00.126414+00:00 node start dev
+2026-11-09T11:50:01.185480+00:00 dev cursor 01-Book attempt=1
+2026-11-09T12:00:13.811712+00:00 dev verify 01-Book PASS attempt=1

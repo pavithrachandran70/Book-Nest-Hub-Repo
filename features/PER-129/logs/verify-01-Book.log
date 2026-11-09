@@ -1,0 +1,21 @@
+===== 2026-11-09T12:00:13+00:00 attempt 1: PASS =====
+$ npm test
+
+> booknest@1.0.0 test
+> jest --watchAll=false
+
+
+PASS __tests__/health.test.js
+  Health check and database initialization
+    ✓ AC-1: Server startup creates database file with tables (5 ms)
+    ✓ AC-2: GET /api/health returns 200 { "status": "ok" } (30 ms)
+    ✓ AC-14: Database persists across restart (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        0.701 s, estimated 1 s
+Ran all test suites.
+
+(exit 0)
+

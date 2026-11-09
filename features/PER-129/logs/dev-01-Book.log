@@ -1,0 +1,14 @@
+Story 01-Book is in place. The BookNest API scaffold creates the SQLite schema on startup and serves the health check. `npm test` passed: 3 tests, 1 suite.
+
+`GET /api/health` returns `200` with `{ "status": "ok" }`. On load, `src/db.js` opens `data/booknest.sqlite`, turns on foreign keys, and creates `product`, `cart`, `cart_item`, `order`, and `order_item`. Primary keys are `INTEGER PRIMARY KEY`, so SQLite assigns row ids and the file contains only those five tables.
+
+Files changed:
+- `package.json`
+- `package-lock.json`
+- `.gitignore`
+- `data/.gitkeep`
+- `src/db.js`
+- `src/app.js`
+- `src/server.js`
+- `src/routes/health.js`
+- `__tests__/health.test.js`Dependency installation and the `better-sqlite3` rebuild both finished successfully. The story 01 scaffold is already in place, and `npm test` passed all 3 health and schema tests.

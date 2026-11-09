@@ -1,20 +1,20 @@
 ---
 schema_version: 1
 key: PER-129
-status: waiting_architect_review
-current_node: architect_gate
+status: in_development
+current_node: dev
 track: standard
 involved_repos:
 - Book
 depends_on: []
 owner: pavc
-lease_until: '2026-11-11T11:17:09.580882+00:00'
-revision: 22
+lease_until: '2026-11-11T11:49:59.102162+00:00'
+revision: 36
 hub_sha: null
 ticket_hash: 7c3d76033a3f9967
 jira_hash: 7c3d76033a3f9967
-tpm_approved: false
-specs_locked: false
+tpm_approved: true
+specs_locked: true
 skills_lock:
   bmad: 1cbcfa272fe65787c06a1fa164a901f46117cca7
 stories:
@@ -37,7 +37,7 @@ pr_ids:
   hub_plan: '4'
   hub_arch: '5'
   hub: '5'
-waiting_for: architect_review
+waiting_for: null
 tokens_in: 664880
 tokens_out: 92626
 cost_anthropic_usd: 3.383702
@@ -93,6 +93,21 @@ history:
 - node: architect_gate
   note: awaiting human hub PR approval
   at: '2026-11-09T11:40:08.710528+00:00'
+- node: architect_gate
+  note: approved via hub PR (reconcile)
+  at: '2026-11-09T11:49:59.078544+00:00'
+- node: architect_gate
+  note: "forge unlocked architect_review \u2192 resume"
+  at: '2026-11-09T11:49:59.102196+00:00'
+- node: dev
+  note: starting
+  at: '2026-11-09T11:50:00.126804+00:00'
+- node: dev
+  note: 'not checked before PR, commands empty in project.yaml: repos.Book.commands.lint'
+  at: '2026-11-09T11:50:00.127473+00:00'
+- node: dev
+  note: done 01-Book
+  at: '2026-11-09T12:00:13.859935+00:00'
 ---
 
 # Feature state
