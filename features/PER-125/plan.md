@@ -1,24 +1,25 @@
-# Plan — PER-125 (v1)
+# Plan — PER-125 (v2)
 
 - made from: ticket
 - source: LLM planner
 - needs plan review: yes
-- track hint: standard
+- track hint: quick
 - loop: story_with_design
 - delivery: delivery
 - PR fixes run automatically: pr_fix_minor, pr_fix_moderate (other PR comments go to a person)
 
-Build a complete Node.js bookstore API from scratch in a single repo with catalog, cart, checkout, and shipping—a well-defined implementation task that needs a concrete file plan before coding.
+Build the complete BookNest API from scratch in one story: this is a single-repo, self-contained implementation with clear acceptance criteria and explicit file structure, fitting quick_fix with designer for the concrete file plan.
 
 ## Steps
 
-1. [x] **analyst (inline_story)** — Transform the ticket's detailed acceptance criteria into a structured Given/When/Then story with technical notes.
-   - focus: Keep the AC granular and organized by capability: scaffold, health, catalog CRUD with auth, cart operations, checkout with stock validation, shipping with auth, persistence, and tests. Call out the SQLite schema creation on startup, x-role header auth pattern, and x-cart-id session tracking.
-2. [x] **designer (lld)** — Produce a complete file plan, database schema, route structure, and implementation sequence before any code is written.
-   - focus: Design the SQLite schema with product, cart, cart_item, and order tables. Map each AC to specific Express routes with their handlers. Plan the project structure: package.json, src/server.js, src/routes/, src/db/, and tests/. Detail the auth middleware for x-role and cart resolution for x-cart-id. Outline the transaction handling for checkout (stock reduction + order creation).
-3. [x] **test_architect (tests)** — Map each acceptance criterion to a concrete test case covering health, catalog auth, cart flows, checkout validation, stock updates, shipping auth, and persistence.
-   - focus: Create test cases for: API health check, admin-only book creation, shopper catalog read, cart item addition with auto-increment, quantity-above-stock rejection, cart item deletion, successful checkout with stock deduction and cart clear, checkout failure when stock is insufficient, admin-only shipping, shopper 403 on shipping, and persistence after restart.
-4. [ ] **critic (consistency_check)** — Verify the inline story, LLD, and test plan agree on the schema, routes, auth rules, cart semantics, and checkout transaction behavior.
+1. [ ] **analyst (inline_story)** — Convert the ticket's 15 acceptance criteria into one implementable story with Given/When/Then format and tech notes.
+   - focus: Preserve all 15 ACs verbatim from the ticket. AC15 ('run npm test and all tests pass') is a concrete acceptance criterion, not a meta-gate. Use the corrected database file name 'data/booknest.sqlite' and the five tables: product, cart, cart_item, order, order_item.
+2. [ ] **designer (lld)** — Provide a concrete file plan, route handlers, schema DDL, and test structure before coding.
+   - focus: List all 15 ACs in the story's Acceptance Criteria section. Document the GET /api/orders/:id route handler explicitly. Map AC15 to a test suite integration check or clarify it as verified by the test runner's exit code. Reconcile the test count narrative: if AC15 is verified by the 14 behavioral tests' collective pass, state that clearly without demoting AC15 from the AC list.
+3. [ ] **test_architect (tests)** — Map each of the 15 acceptance criteria to test cases with 1:1 traceability.
+   - focus: Ensure AC15 has a corresponding test entry (either a dedicated suite runner test or a narrative stating AC15 is verified by the suite's exit code). Resolve the test count mismatch: ticket AC15 requires tests to pass; the Tests section must reflect this without ambiguity.
+4. [ ] **critic (consistency_check)** — Cross-check the story LLD against the ticket and change_requests.md to ensure AC count, test count, file paths, and database details are consistent.
+   - focus: Verify all 15 ACs appear in the LLD, the GET /api/orders/:id route is documented, the database file is 'data/booknest.sqlite' with five tables, and the test count narrative is resolved. Address every mismatch listed in change_requests.md.
 5. [ ] **architect_gate (review)** _(auto)_ — Human approval of specs and this plan before Dev.
 6. [ ] **dev** _(auto)_ — Loop delivery.
 7. [ ] **pre_pr_qa** _(auto)_ — Loop delivery.
@@ -28,4 +29,4 @@ Build a complete Node.js bookstore API from scratch in a single repo with catalo
 
 ## Skipped roles
 
-- **tpm_gate** — The ticket clearly defines scope, acceptance criteria, and what is out of scope; no ambiguity requiring product sign-off.
+- **tpm_gate** — Ticket scope and acceptance criteria are explicit and technical; no product ambiguity or cross-team coordination needed.
