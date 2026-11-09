@@ -72,3 +72,15 @@
 2026-11-09T12:11:01.946412+00:00 dev verify 04-Book PASS attempt=1
 2026-11-09T12:11:05.116974+00:00 dev cursor 05-Book attempt=1
 2026-11-09T12:16:23.815782+00:00 dev verify 05-Book PASS attempt=1
+2026-11-09T12:16:27.038531+00:00 node end dev waiting=None
+2026-11-09T12:16:27.056413+00:00 heartbeat pre_pr_qa
+2026-11-09T12:16:27.057087+00:00 node start pre_pr_qa
+2026-11-09T12:16:27.060157+00:00 node end pre_pr_qa waiting=None
+2026-11-09T12:16:27.075351+00:00 heartbeat open_pr
+2026-11-09T12:16:27.075812+00:00 node start open_pr
+2026-11-09T12:16:34.561569+00:00 node end open_pr waiting=None
+2026-11-09T12:16:34.569717+00:00 heartbeat pr_review
+2026-11-09T12:16:34.569975+00:00 node start pr_review
+2026-11-09T12:16:36.508840+00:00 heartbeat reviewer
+2026-11-09T12:16:39.758953+00:00 reviewer llm model=claude-sonnet-4-5-20250929 in=57843 out=7 usd=0.173634
+2026-11-09T12:16:42.978861+00:00 node end pr_review waiting=feature_pr_human

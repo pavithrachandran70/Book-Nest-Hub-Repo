@@ -8,3 +8,4 @@ JSON:{"key": "tracker:create-subtask:PER-129:story:03-Book", "intent": "create_s
 JSON:{"key": "tracker:create-subtask:PER-129:story:04-Book", "intent": "create_subtask", "result": "PER-136", "at": "2026-11-09T11:22:57.277246+00:00"}
 JSON:{"key": "tracker:create-subtask:PER-129:story:05-Book", "intent": "create_subtask", "result": "PER-137", "at": "2026-11-09T11:22:58.533913+00:00"}
 JSON:{"key": "codehost:open-pr:hub:PER-129:architect", "intent": "open_hub_pr", "result": "5", "at": "2026-11-09T11:40:08.710306+00:00"}
+JSON:{"key": "codehost:open-pr:PER-129:Book", "intent": "open_pr", "result": "1", "at": "2026-11-09T12:16:33.324554+00:00"}
