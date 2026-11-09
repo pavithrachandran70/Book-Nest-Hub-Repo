@@ -1,0 +1,100 @@
+---
+schema_version: 1
+key: PER-129
+status: waiting_architect_review
+current_node: architect_gate
+track: standard
+involved_repos:
+- Book
+depends_on: []
+owner: pavc
+lease_until: '2026-11-11T11:17:09.580882+00:00'
+revision: 22
+hub_sha: null
+ticket_hash: 7c3d76033a3f9967
+jira_hash: 7c3d76033a3f9967
+tpm_approved: false
+specs_locked: false
+skills_lock:
+  bmad: 1cbcfa272fe65787c06a1fa164a901f46117cca7
+stories:
+- 01-Book
+- 02-Book
+- 03-Book
+- 04-Book
+- 05-Book
+child_ticket_keys:
+- PER-133
+- PER-134
+- PER-135
+- PER-136
+- PER-137
+critic_iterations: 1
+dev_retries: 0
+pr_revision_rounds: 0
+gate_rounds: {}
+pr_ids:
+  hub_plan: '4'
+  hub_arch: '5'
+  hub: '5'
+waiting_for: architect_review
+tokens_in: 664880
+tokens_out: 92626
+cost_anthropic_usd: 3.383702
+history:
+- node: intake
+  note: snapshot written
+  at: '2026-11-09T11:11:22.110487+00:00'
+- node: triage
+  note: llm classifier
+  at: '2026-11-09T11:11:23.673137+00:00'
+- node: planner
+  note: v1 source=llm loops=['feature_with_architecture', 'delivery', 'pr_fix_minor',
+    'pr_fix_moderate'] steps=['analyst', 'architect', 'scrum_master', 'designer',
+    'test_architect', 'critic'] skipped=['tpm_gate']
+  at: '2026-11-09T11:11:40.939988+00:00'
+- node: plan_review
+  note: awaiting human hub PR approval (plan)
+  at: '2026-11-09T11:11:49.341036+00:00'
+- node: plan_review
+  note: approved via hub PR (reconcile)
+  at: '2026-11-09T11:17:09.564409+00:00'
+- node: plan_review
+  note: "forge unlocked plan_review \u2192 resume"
+  at: '2026-11-09T11:17:09.581079+00:00'
+- node: analyst
+  note: wrote requirements.md
+  at: '2026-11-09T11:17:56.576187+00:00'
+- node: analyst
+  note: proposed_tickets=1
+  at: '2026-11-09T11:18:08.023990+00:00'
+- node: architect
+  note: wrote hld.md
+  at: '2026-11-09T11:20:07.499348+00:00'
+- node: architect
+  note: specs=['01']
+  at: '2026-11-09T11:21:06.168840+00:00'
+- node: scrum_master
+  note: stories=['01-Book', '02-Book', '03-Book', '04-Book', '05-Book']; linear=['PER-133',
+    'PER-134', 'PER-135', 'PER-136', 'PER-137']
+  at: '2026-11-09T11:22:58.541729+00:00'
+- node: designer
+  note: lld updated
+  at: '2026-11-09T11:31:25.184892+00:00'
+- node: test_architect
+  note: tests appended
+  at: '2026-11-09T11:39:04.648213+00:00'
+- node: critic
+  note: pass iter=1
+  at: '2026-11-09T11:39:58.438303+00:00'
+- node: merge_pack
+  note: merged 5 ticket(s)
+  at: '2026-11-09T11:39:58.448371+00:00'
+- node: architect_gate
+  note: awaiting human hub PR approval
+  at: '2026-11-09T11:40:08.710528+00:00'
+---
+
+# Feature state
+
+See frontmatter for machine-readable fields.
