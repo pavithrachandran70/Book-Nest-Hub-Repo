@@ -1,0 +1,1 @@
+{"story": "02-Book", "repo": "Book", "attempt": 1, "ok": true, "at": "2026-11-09T12:02:44+00:00", "checks": [{"name": "lint", "cmd": "", "exit": null, "summary": "no command set"}, {"name": "test", "cmd": "npm test", "exit": 0, "summary": "Ran all test suites."}]}

@@ -9,7 +9,7 @@ involved_repos:
 depends_on: []
 owner: pavc
 lease_until: '2026-11-11T11:49:59.102162+00:00'
-revision: 36
+revision: 37
 hub_sha: null
 ticket_hash: 7c3d76033a3f9967
 jira_hash: 7c3d76033a3f9967
@@ -108,6 +108,9 @@ history:
 - node: dev
   note: done 01-Book
   at: '2026-11-09T12:00:13.859935+00:00'
+- node: dev
+  note: done 02-Book
+  at: '2026-11-09T12:02:44.516036+00:00'
 ---
 
 # Feature state

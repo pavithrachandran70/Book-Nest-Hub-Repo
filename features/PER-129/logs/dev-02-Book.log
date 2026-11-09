@@ -1,0 +1,12 @@
+Story 02-Book is implemented. Catalog endpoints enforce the admin role, and `npm test` passed (14 tests: 11 books, 3 health).
+
+**Behavior**
+- `POST /api/books` requires `x-role: admin` and returns 201 with the created book. A shopper or a missing role returns 403 `{ "error": "Admin role required" }`.
+- Validation returns 400 for an empty title, a price that is not greater than 0, a negative or non-integer stock, and a missing author.
+- `GET /api/books` returns every book ordered by id. `GET /api/books/:id` returns the book, or 404 `{ "error": "Book not found" }`.
+
+**Files changed**
+- `src/middleware/role.js` — `roleReader` and `requireAdmin`
+- `src/routes/books.js` — create, list, and get-by-id
+- `src/app.js` — mounts the role reader and `/api/books`
+- `__tests__/books.test.js` — the 11 story tests
