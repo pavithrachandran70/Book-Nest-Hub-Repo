@@ -1,0 +1,15 @@
+Checkout and order shipping for story 04-Book are in place, and `npm test` passes (42 tests).
+
+`POST /api/checkout` runs in a database transaction. It rejects an empty cart with `400 { "error": "Cart is empty" }` and a line whose quantity exceeds stock with `400` and an `Insufficient stock` error, leaving stock and orders unchanged. On success it returns `201` with status `placed`, the line prices captured at checkout, the total, and `createdAt`, then reduces stock and clears the cart.
+
+`POST /api/orders/:id/ship` is admin-only. An admin receives `200` with status `shipped`. A shopper receives `403 { "error": "Admin role required" }`. A missing order returns `404 { "error": "Order not found" }`.
+
+Jest now uses one worker because every suite shares `data/booknest.sqlite` and clears it in `beforeEach`. Parallel workers were deleting each other’s rows.
+
+Files changed:
+- `src/routes/checkout.js`
+- `src/routes/orders.js`
+- `src/app.js`
+- `__tests__/checkout.test.js`
+- `__tests__/orders.test.js`
+- `package.json`
