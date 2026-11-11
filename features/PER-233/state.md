@@ -1,15 +1,15 @@
 ---
 schema_version: 1
 key: PER-233
-status: in_development
-current_node: dev
+status: pr_reviewed
+current_node: pr_review
 track: standard
 involved_repos:
 - Book
 depends_on: []
 owner: pavc
 lease_until: '2026-11-13T11:58:23.275322+00:00'
-revision: 21
+revision: 25
 hub_sha: null
 ticket_hash: 7811695eafcf2b03
 jira_hash: 7811695eafcf2b03
@@ -28,10 +28,11 @@ pr_ids:
   hub_plan: '7'
   hub_arch: '8'
   hub: '8'
-waiting_for: null
-tokens_in: 43080
-tokens_out: 9450
-cost_anthropic_usd: 0.27063
+  Book: '2'
+waiting_for: feature_pr_human
+tokens_in: 94985
+tokens_out: 9457
+cost_anthropic_usd: 0.42645
 history:
 - node: intake
   note: snapshot written
@@ -82,6 +83,21 @@ history:
 - node: dev
   note: done 01-Book
   at: '2026-11-11T12:09:13.750295+00:00'
+- node: pre_pr_qa
+  note: report written
+  at: '2026-11-11T12:09:19.287227+00:00'
+- node: open_pr
+  note: push Book ok
+  at: '2026-11-11T12:09:30.856786+00:00'
+- node: open_pr
+  note: PRs opened Book:2
+  at: '2026-11-11T12:09:30.856878+00:00'
+- node: pr_review
+  note: diff loaded Book chars=201028
+  at: '2026-11-11T12:09:32.881803+00:00'
+- node: pr_review
+  note: awaiting feature_pr_human
+  at: '2026-11-11T12:09:45.793011+00:00'
 ---
 
 # Feature state

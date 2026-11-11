@@ -18,10 +18,10 @@ Add a single GET endpoint to an existing Express API; one inline story with a fi
    - focus: Show where the route goes in the Express app structure, the exact SELECT query to fetch order and items, and how to check x-role.
 3. [x] **test_architect (tests)** — Edge cases include unknown order ID, role authorization for both shopper and admin, and correct item structure.
    - focus: Cover 200 with all fields present, 404 for missing order, and both shopper and admin calling successfully.
-4. [ ] **architect_gate (review)** _(auto)_ — Human approval of specs and this plan before Dev.
-5. [ ] **dev** _(auto)_ — Loop delivery.
-6. [ ] **pre_pr_qa** _(auto)_ — Loop delivery.
-7. [ ] **open_pr** _(auto)_ — Loop delivery.
+4. [x] **architect_gate (review)** _(auto)_ — Human approval of specs and this plan before Dev.
+5. [x] **dev** _(auto)_ — Loop delivery.
+6. [x] **pre_pr_qa** _(auto)_ — Loop delivery.
+7. [x] **open_pr** _(auto)_ — Loop delivery.
 8. [ ] **pr_review** _(auto)_ — Loop delivery.
 9. [ ] **merge** _(auto)_ — Loop delivery.
 
