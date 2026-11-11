@@ -1,0 +1,12 @@
+`GET /api/orders/:id` is in place. A shopper or admin can read an order and its items, and an unknown id returns 404 `{ "error": "Order not found" }`.
+
+`npm test` passed: 8 tests, 0 failures.
+
+Files changed:
+
+- `package.json` and `package-lock.json` — Express, better-sqlite3, Jest, and Supertest
+- `.gitignore`
+- `src/db.js` — SQLite connection and `orders` / `order_items` tables
+- `src/server.js` — app mounted at `/api/orders`, listening on `PORT` (default 3000)
+- `src/routes/orders.js` — `GET /:id` handler
+- `src/routes/orders.test.js` — the five acceptance criteria and the three edge casesDependency install finished successfully, and the test run after it passed: all 8 order-endpoint tests succeeded.

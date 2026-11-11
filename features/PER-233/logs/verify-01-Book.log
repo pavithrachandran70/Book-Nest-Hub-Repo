@@ -1,0 +1,26 @@
+===== 2026-11-11T12:09:13+00:00 attempt 1: PASS =====
+$ npm test
+
+> booknest@1.0.0 test
+> jest --watchAll=false --runInBand
+
+
+PASS src/routes/orders.test.js
+  GET /api/orders/:id
+    ✓ AC-1: Retrieve an existing order with all fields (162 ms)
+    ✓ AC-2: Retrieve a shipped order (25 ms)
+    ✓ AC-3: Return 404 for unknown order id (16 ms)
+    ✓ AC-4: Admin role can retrieve an order (31 ms)
+    ✓ AC-5: Shopper role can retrieve an order (58 ms)
+    ✓ Edge case: Order with zero items (42 ms)
+    ✓ Edge case: createdAt is a valid ISO 8601 string (53 ms)
+    ✓ Edge case: total and price fields are numbers, not strings (26 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        3.148 s
+Ran all test suites.
+
+(exit 0)
+
