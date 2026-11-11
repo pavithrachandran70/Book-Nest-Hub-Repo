@@ -12,11 +12,11 @@ Add a single GET endpoint to an existing Express API; one inline story with a fi
 
 ## Steps
 
-1. [ ] **analyst (inline_story)** — Convert the ticket into a single implementable story with Given/When/Then acceptance criteria.
+1. [x] **analyst (inline_story)** — Convert the ticket into a single implementable story with Given/When/Then acceptance criteria.
    - focus: Focus on the exact response shapes for 200 and 404, and the requirement that both shopper and admin roles can call it.
-2. [ ] **designer (lld)** — Provide a file plan showing which route file to modify, the SQL query needed, and the response mapping.
+2. [x] **designer (lld)** — Provide a file plan showing which route file to modify, the SQL query needed, and the response mapping.
    - focus: Show where the route goes in the Express app structure, the exact SELECT query to fetch order and items, and how to check x-role.
-3. [ ] **test_architect (tests)** — Edge cases include unknown order ID, role authorization for both shopper and admin, and correct item structure.
+3. [x] **test_architect (tests)** — Edge cases include unknown order ID, role authorization for both shopper and admin, and correct item structure.
    - focus: Cover 200 with all fields present, 404 for missing order, and both shopper and admin calling successfully.
 4. [ ] **architect_gate (review)** _(auto)_ — Human approval of specs and this plan before Dev.
 5. [ ] **dev** _(auto)_ — Loop delivery.
